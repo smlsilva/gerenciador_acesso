@@ -1,0 +1,20 @@
+.cabecalho
+{
+    padding: 30px;
+    background-color: #7600bc;
+    font-size: 20px;
+}
+
+.cabecalho > ul
+{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    list-style: none;
+}
+
+a
+{
+    text-decoration: none;
+    color: #cece;
+}
