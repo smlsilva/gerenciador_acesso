@@ -15,7 +15,7 @@ section
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    height: 50vh;
+    height: 30vh;
     width: 80vh;
     padding: 50px;
     border: 1px solid #ccc;
@@ -43,7 +43,7 @@ section
 
 .container-form > form > span
 {
-    padding: 0 0 0 20px;
+    padding: 0 0 0 10px;
     font-size: 10px;
 }
 

@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once('./src/conn.php');
+    require_once('../../../conn_gerenciador_acesso/conn.php');
 
     $tokenSession = session_id();
     $emailSession = !empty(filter_input(INPUT_POST, 'email')) ? filter_input(INPUT_POST, 'email') : '';
