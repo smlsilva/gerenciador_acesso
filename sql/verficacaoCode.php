@@ -1,6 +1,6 @@
 <?php session_start()?>
 <?php
-    require_once("../../../conn_gerenciador_acesso/conn.php");
+    require_once("../src/conn.php");
 
     $code = $_POST['code'];
     $email = $_SESSION['email'];

@@ -1,6 +1,6 @@
 <?php session_start()?>
 <?php
-require_once("../../../conn_gerenciador_acesso/conn.php");
+require_once("../src/conn.php");
 
 use Exception as GlobalException;
 use PHPMailer\PHPMailer\PHPMailer;

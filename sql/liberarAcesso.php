@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once("../../../conn_gerenciador_acesso/conn.php");
+    require_once("../src/conn.php");
 
     $email = !empty(filter_input(INPUT_POST, 'mail')) ? filter_input(INPUT_POST, 'mail') : '';
     $respConn = new Conexao();
