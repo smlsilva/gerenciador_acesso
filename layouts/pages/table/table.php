@@ -7,8 +7,8 @@
     $datas = '';
 ?>
 SISTEMA DE CONTROLE DE ACESSO
-<div style="width: 100%; overflow: auto;">
-    <table style="font-size: 18px; font-family: sans-serif; width: 80%; background-color: #999; margin: 10px;">
+<div style="display: flex; justify-content: center;">
+    <table class="table-full" style="font-size: 0.9rem; font-family: sans-serif; width: 80%; background-color: #999; margin: 10px;">
         <thead style="background-color: #235;">
             <tr>
                 <th>EMPRESA</th>
@@ -19,9 +19,12 @@ SISTEMA DE CONTROLE DE ACESSO
                 <th>RE</th>
                 <th>EMAIL</th>
                 <th>CELULAR CORP</th>
+                <th>EXCLUIR</th>
+                <th>EDITAR</th>
+                <th>ENVIAR EMAIL</th>
             </tr>
         </thead>
-        <tbody id="table" style="background-color: #bbb;color: #000;">
+        <tbody id="table" style="background-color: #bbb;color: #000; text-align: center;">
             <?php while($data = $resp->fetch(PDO::FETCH_ASSOC)) {?>
                 <?php
                 $datas .= "
@@ -34,48 +37,31 @@ SISTEMA DE CONTROLE DE ACESSO
                     <td>{$data['re']}</td>
                     <td>{$data['email']}</td>
                     <td>{$data['celular_corp']}</td>
+                    <td><i class='bx bx-trash-alt' style='color: #f00;'></i></td>
+                    <td><i class='bx bx-calendar-edit' style='color: #ffa500;'></i></td>
+                    <td onclick='showForm()'><i class='bx bxs-send' style='color: #0cb;'></i></td>
                 </tr>";
                 ?>
             <?php }?>
             <?php echo $datas?>
         </tbody>
     </table>
+    <div class="form_sendMail" hidden>
+        <?php require_once("./layouts/pages/form/form.php") ?>
+    </div>
 </div>
 <script>
+    function showForm(email)
+    {
+        $(".form_sendMail").removeAttr('hidden').css('display', 'flex').css('flex-direction', 'column').css('margin', '30px').css('width', '30vw');
+        $("#maildesc").val(`${email}`);
+        $(".table-full").attr('hidden', 'hidden')
+    }
+
     function upgradeStatus(e)
     {
         const email = [e][0].children[6].innerText;
         const nome  = [e][0].children[4].innerText;
-        let resp = window.confirm('Você quer liberar ' + nome + ' ?');
-        
-        if(resp)
-        {
-            $.ajax({
-                url: './sql/liberarAcesso.php',
-                method: 'post',
-                data: {mail: email},
-                dataType: 'json',
-                success: function(e)
-                {
-                    if(e == 1)
-                    {
-                        alert('Liberado com Sucesso!');
-                        window.location.href = './';
-                    }
-                    else if(e == 0)
-                    {
-                        alert('Error ao Liberar!');
-                    }
-                },
-                error: function(e)
-                {
-                    // ERROR
-                }
-            })
-        }
-        else
-        {
-            window.location.href = './';
-        }
+        showForm(email)
     }
 </script>
