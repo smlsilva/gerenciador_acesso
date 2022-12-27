@@ -38,7 +38,7 @@ SISTEMA DE CONTROLE DE ACESSO
                             },
                             error: function(e)
                             {
-                                console.log(e)
+                                console.log(e.responseText)
                             }
                         })
 

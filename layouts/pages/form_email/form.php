@@ -22,20 +22,14 @@
 <script>
     function verificaConteudo()
     {
-        const valores = {
-            assunto: $('#assunto').val(),
-            acessoLiberado: $('#liberaAcesso').val(),
-            mensagem: $('#mensagem').val()
-        }
-
         if($('#assunto').val() && $('#liberaAcesso').val() == 1 && !$("#bloquear").val() && $('#mensagem').val())
         {
-            $("#bloquear").attr('hidden', 'hidden');
+            $("#bloquear").attr('hidden', 'hidden').val('');
             $(':button').removeAttr('disabled');
         }
         else if($('#assunto').val() && $('#liberaAcesso').val() == 1 && $("#bloquear").val() && $('#mensagem').val())
         {
-            $("#bloquear").attr('hidden', 'hidden');
+            $("#bloquear").attr('hidden', 'hidden').val('');
             $(':button').removeAttr('disabled');
         }
         else if($('#assunto').val() && $('#liberaAcesso').val() == 2 && $("#bloquear").val() && $('#mensagem').val())
@@ -44,8 +38,16 @@
         }
         else if($('#assunto').val() && $('#liberaAcesso').val() == 2 && !$("#bloquear").val() && $('#mensagem').val())
         {
-            $("#bloquear").removeAttr('hidden')
+            $("#bloquear").removeAttr('hidden').val('');
             $(':button').attr('disabled', 'disabled');
+        }
+        else if($('#liberaAcesso').val() == 2 && !$("#bloquear").val())
+        {
+            $("#bloquear").removeAttr('hidden').val('');
+        }
+        else if(!$('#liberaAcesso').val() || $('#liberaAcesso').val() == 1)
+        {
+            $("#bloquear").attr('hidden','hidden').val('');
         }
     }
 
@@ -61,7 +63,8 @@
                 email: $('#maildesc').val(),
                 assunto: $('#assunto').val(),
                 acessoLiberado: $('#liberaAcesso').val(),
-                mensagem: $('#mensagem').val()
+                mensagem: $('#mensagem').val(),
+                bloquear: $("#bloquear").val()
             }
             
             let resp = window.confirm('Você quer liberar o email ' + dados.email + ' ?');
@@ -75,26 +78,39 @@
                     dataType: 'json',
                     success: function(e)
                     {
-                        console.log(e)
-                        // if(e == 1)
-                        // {
-                        //     alert('Liberado com Sucesso!');
-                        //     window.location.href = './';
-                        // }
-                        // else if(e == 0)
-                        // {
-                        //     alert('Error ao Liberar!');
-                        // }
+                        if(e == 201)
+                        {
+                            alert("JÁ FOI LIBERADO");
+                        }
+                        else if(e == 202)
+                        {
+                            alert("BLOQUEADO COM SUCESSO!");
+                        }
+                        else if(e == 204)
+                        {
+                            alert("JÁ ESTÁ BLOQUEADO");
+                        }
+                        else if(e == 222)
+                        {
+                            alert("EXECUTADO COM SUCESSO");
+                        }
+                        else if(e == 404)
+                        {
+                            alert("NÃO FOI PREENCHIDO CORRETAMENTE");
+                        }
                     },
                     error: function(e)
                     {
-                        console.log(e)
+                        if(e == 200)
+                        {
+                            alert("ATUALIZADO COM SUCESSO!");
+                        }
                     }
                 })
             }
             else
             {
-                // window.location.href = './';
+                window.location.href = './';
             }
         }
     }
