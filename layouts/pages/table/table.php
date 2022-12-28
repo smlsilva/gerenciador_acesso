@@ -1,3 +1,8 @@
+<style>
+    <?php
+        require_once("./layouts/pages/table/table.css");
+    ?>
+</style>
 <?php
     require_once("./src/conn.php");
     $conexao = new Conexao();
@@ -7,7 +12,7 @@
     $datas = '';
 ?>
 <div style="display: flex; justify-content: center;">
-    <table class="table-full" style="font-size: 0.8rem; font-family: sans-serif;">
+    <table class="table-full">
         <thead style="background-color: #235;">
             <tr style="height: 5vh;">
                 <th>EMPRESA</th>
@@ -55,14 +60,17 @@
 <script>
     function showForm(email)
     {
-        $(".form_sendMail").removeAttr('hidden').css('display', 'flex').css('flex-direction', 'column').css('width', '30vw');
+        $(".form_sendMail").removeAttr('hidden').css('display', 'flex').css('flex-direction', 'column');
         $("#maildesc").val(`${email}`);
         $(".table-full").attr('hidden', 'hidden')
     }
 
     function showFormEdit(edit)
     {
-           
+        $(".form_sendMail").attr('hidden', 'hidden');
+        $(".table-full").attr('hidden', 'hidden');
+        $(".form_edit").removeAttr('hidden', 'hidden');
+        const email = $(edit)[0].attributes[2].value;
     }
 
     function upgradeStatus(e)

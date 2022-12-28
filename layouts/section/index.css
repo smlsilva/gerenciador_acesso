@@ -1,12 +1,7 @@
 section
 {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-size: 30px;
-    height: 80vh;
-    width: 100vw;
+    flex-flow: column;
     color: #ccc;
 }
 
@@ -15,17 +10,24 @@ section
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    height: 30vh;
     width: 80vh;
     padding: 50px;
     border: 1px solid #ccc;
 }
 
-.container-form > form > input
+.container-form > form > input, .container-form > form > select, .container-form > form > textarea 
 {
     border: 1px solid #ccc;
     border-radius: 15px;
     padding: 20px;
+    margin: 5px 0 0 0;
+}
+.container-form > form > div > div
+{
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 5px 0 0 0;
 }
 
 .disabled
@@ -48,18 +50,6 @@ section
 }
 
 @media screen and (max-width: 940px) {
-    section
-    {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        font-size: 25px;
-        height: 80vh;
-        width: 100vw;   
-        color: #ccc;
-    }
-
     .container-form > form
     {
         display: flex;

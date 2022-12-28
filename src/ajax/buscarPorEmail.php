@@ -24,7 +24,7 @@
                     <td>{$usuarioSelecionado['email']}</td>
                     <td>{$usuarioSelecionado['celular_corp']}</td>
                     <td><i class='bx bx-trash-alt' style='color: #f00;'></i></td>
-                    <td><i class='bx bx-calendar-edit' style='color: #ffa500;'></i></td>
+                    <td onclick='showFormEdit(this)' style='cursor: pointer;' value='{$usuarioSelecionado['email']}'><i class='bx bx-calendar-edit' style='color: #ffa500;'></i></td>
                     <td onclick='upgradeStatus(this)' style='cursor: pointer;' value='{$usuarioSelecionado['email']}'><i class='bx bxs-send' style='color: #0cb;'></i></td>
                 </tr>";
             }
