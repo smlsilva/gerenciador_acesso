@@ -70,7 +70,57 @@
         $(".form_sendMail").attr('hidden', 'hidden');
         $(".table-full").attr('hidden', 'hidden');
         $(".form_edit").removeAttr('hidden', 'hidden');
+        
         const email = $(edit)[0].attributes[2].value;
+
+        $.ajax({
+            url: './src/ajax/buscarInformations.php',
+            data: {mail: email},
+            dataType: 'json',
+            method: 'post',
+            success: function(e)
+            {
+                for(let i = 0; i < e.length; i++)
+                {
+                    if(i == 0)
+                    {
+                        $("#nome").val(e[i]);
+                    }
+                    else if(i == 1)
+                    {
+                        $("#re").val(e[i]);
+                    }
+                    else if(i == 2)
+                    {
+                        $("#email").val(e[i]);
+                    }
+                    else if(i == 3)
+                    {
+                        $("#cel_corp").val(e[i]);
+                    }
+                    else if(i == 4)
+                    {
+                        $("#empresa").val(e[i]);
+                    }
+                    else if(i == 5)
+                    {
+                        $("#contrato").val(e[i]);
+                    }
+                    else if(i == 6)
+                    {
+                        $("#cluster").val(e[i]);
+                    }
+                    else if(i == 7)
+                    {
+                        $("#cargo").val(e[i]);
+                    }
+                }
+            },
+            error: function(e)
+            {
+                console.log("ERROR " + e);
+            }
+        })
     }
 
     function upgradeStatus(e)

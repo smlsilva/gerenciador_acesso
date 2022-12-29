@@ -66,7 +66,7 @@
                 bloquear: $("#bloquear").val()
             }
             
-            let resp = window.confirm('Você quer liberar o email ' + dados.email + ' ?');
+            let resp = window.confirm('Você deseja executar essa ação no e-mail ' + dados.email + ' ?');
             
             if(resp)
             {
@@ -77,7 +77,11 @@
                     dataType: 'json',
                     success: function(e)
                     {
-                        if(e == 201)
+                        if(e == 200)
+                        {
+                            alert("ATUALIZADO COM SUCESSO!");
+                        }
+                        else if(e == 201)
                         {
                             alert("JÁ FOI LIBERADO");
                         }
@@ -100,10 +104,7 @@
                     },
                     error: function(e)
                     {
-                        if(e == 200)
-                        {
-                            alert("ATUALIZADO COM SUCESSO!");
-                        }
+                        console.log(e)
                     }
                 })
             }

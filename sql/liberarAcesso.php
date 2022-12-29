@@ -46,7 +46,8 @@
                         $mail->Password   = '2v=a5OKSTAVe';                               //SMTP password
                         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
                         $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-                    
+                        $mail->CharSet    = 'UTF-8';
+
                         //Recipients
                         $mail->setFrom('qualidade@suportespi.com.br', 'Code Access');
                         $mail->addAddress("$email", 'Anonimo');
@@ -108,7 +109,8 @@
                         $mail->Password   = '2v=a5OKSTAVe';                               //SMTP password
                         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
                         $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-                    
+                        $mail->CharSet    = 'UTF-8';
+
                         //Recipients
                         $mail->setFrom('qualidade@suportespi.com.br', 'Code Access');
                         $mail->addAddress("$email", 'Anonimo');
